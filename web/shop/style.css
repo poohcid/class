@@ -1,0 +1,38 @@
+body {
+  text-align: center;
+  background-image: url("images/back.jpg");
+}
+
+h1, h2, p#p01{
+  background-color: lightblue;
+}
+
+table#t02, tr, td{
+  background-color: white;
+  border: 1px solid black;
+}
+
+label {
+  font-size: 30px;
+  color: white;
+  background-color: black;
+}
+
+table#t01 {
+  background-color: white;
+  width:50%;
+  margin-left:20%;
+  margin-right:20%;
+}
+
+table#t04{
+  background-color: white;
+  width:60%;
+  margin-left:20%;
+  margin-right:10%;
+}
+
+h2#h01{
+  background-color: black;
+  color: white;
+}

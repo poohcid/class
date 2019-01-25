@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Welcome to JSON</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        function myfun(){
+            var x = document.getElementById("n01").value;
+
+            $.getJSON('https://api.openbrewerydb.org/breweries', function(response) {
+
+            document.getElementById("data").innerHTML = response[x].name
+            document.getElementById("data1").innerHTML = response[x].city
+            document.getElementById("data2").innerHTML = response[x].website_url
+            document.getElementById("data3").innerHTML = response[x].latitude
+            document.getElementById("data4").innerHTML = response[x].longitude
+            document.getElementById("data5").innerHTML = response[x].updated_at
+        }
+        );
+        }
+
+    </script>
+    <table id="t02">
+        <tr id="t02">
+            <th id="t02">
+    <h3><div id="data5"/></h3>
+    <h1></br></h1>
+    <h2 id="h03">searching
+        <input type="number" id="n01" value="0" min="0"/>
+        <button onclick="myfun()" width="50" height="50">
+         <p>submit</p>
+        </button>
+        <p id="p01">**ให้สุ่มเลขตามใจชอบ จะปรากฏที่ตั้งของโรงเบียร์ที่หลับใหลอยู่ (เลขระหว่าง 0 - 19)</p>
+    </h2>
+    <table width="200" id="t01">
+        <tbody>
+            <tr id="t01">
+            <th>name</th>
+            <th>city</th>
+            <th>website_url</th>
+            <th>latitude</th>
+            <th>longitude</th>
+            </tr>
+            <tr>
+                <th><div style="color: red" id="data"></th>
+            <th><div style="color: red" id="data1"></th></th>
+            <th><div style="color: red" id="data2"></th>
+            <th><div style="color: red" id="data3"></th>
+            <th><div style="color: red" id="data4"></th>
+            </tr>
+        </tbody>
+    </table>
+    <h1 id="h02">API แสดงพิกัดของโรงเบียร์แห่งหนึ่งใน United States  จาก "https://api.openbrewerydb.org/breweries"</br>
+    (ปล. api ตัวนี้ เป็นฐานข้อมูลรูปแบบพิกัด ข้อมูลที่ได้มาจึงไม่มีการเปลี่ยนแปลง)
+    </h1>
+    <h2 id="h02">api คือตัวเชื่อมไปยังฐานข้อมูลอีกแหล่งหนึ่งที่มี</br>
+        ผู้ให้บริการ ส่งให้ web server มาประมวลผล แล้วส่งกลับมาแสดงผล </br>
+        ตัวอย่างของ api เช่น ราคาทองคำ อัตราแลกเปลี่ยนเงินตรา
+    </h2>
+</th>
+</tr>
+</table>
+
+</body>
+
+</html>

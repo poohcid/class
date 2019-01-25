@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Online Shopping</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <table id="t01" style="width: 60%">
+    <tr>
+      <th>
+  <h1><marquee direction="left" scrollamount="20">ซื้อ 5 ชิ้น เราแถม 1   ฟรี!!!!</marquee></h1>
+  <form method="POST" action="trolley.php">
+    <table style="width:100%" id="t02">
+  <tr>
+    <th>MENU</th>
+    <th>PRICE</th>
+    <th>TOTAL</th>
+  </tr>
+  <tr>
+    <td><img src="images/donut.jpg" alt="donut" width="150" height="150"></td>
+    <td>30 Bath</td>
+    <td><input type="number" name="donut" value="0" min="0" /></td>
+  </tr>
+  <tr>
+    <td><img src="images/hamberger.jpg" alt="hamberger" width="150" height="150"></td>
+    <td>40 Bath</td>
+    <td><input type="number" name="hamberger" value="0" min="0" /></td>
+  </tr>
+  <tr>
+    <td><img src="images/coke.jpg" alt="coke" width="150" height="150"></td>
+    <td>15 Bath</td>
+    <td><input type="number" name="coke" value="0" min="0" /></td>
+</table>
+    <div class="center-box mg-t">
+      <h2>No. prisoner</h2>
+      <div>
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <div>
+        <button class="btn" type="submit">
+        </button>
+      </div>
+    </div>
+  </form>
+</th>
+</tr>
+</table>
+</body>
+</html>
