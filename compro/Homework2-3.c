@@ -2,9 +2,12 @@
 
 int main()
 {
-    int ascii = 'b';
-    char re;
-    re = ascii + 1;
-    printf("%c", re);
+    char number[6];
+    scanf("%s", number);
+    printf("%-81.1s", number);
+    printf("%-81.2s", number);
+    printf("%-81.3s", number);
+    printf("%-81.4s", number);
+    printf("%.5s", number);
     return 0;
 }
