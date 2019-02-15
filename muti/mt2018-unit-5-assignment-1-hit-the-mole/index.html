@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>MT2018 - Unit 5 - Assignment 1 | Hit The bebras</title>
+
+
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+  <h1>hit the bebras!</h1>
+	<h3 id="subTitle">loading...</h3>
+
+
+	<!-- ตัวนับถอยหลัง -->
+	<h2>time left: <span id="theTime">10</span> </h2>
+
+	<!--
+		กล่องตารางเกม
+		สถานะของตุ่นที่จะอยู่ใน pit ได้แก่
+		1.blank (ไม่มีตุ่น) 2.mole (มีตุ่น) 3.die (ตีโดน) 4.miss (ตีผิด)
+	-->
+    <td>
+	<game>
+		<pit x="0" y="0" status="blank" onclick="hit(this)"></pit>
+		<pit x="1" y="0" status="blank" onclick="hit(this)"></pit>
+		<pit x="2" y="0" status="blank" onclick="hit(this)"></pit>
+		<pit x="3" y="0" status="blank" onclick="hit(this)"></pit>
+		<pit x="0" y="1" status="blank" onclick="hit(this)"></pit>
+		<pit x="1" y="1" status="blank" onclick="hit(this)"></pit>
+		<pit x="2" y="1" status="blank" onclick="hit(this)"></pit>
+		<pit x="3" y="1" status="blank" onclick="hit(this)"></pit>
+		<pit x="0" y="2" status="blank" onclick="hit(this)"></pit>
+		<pit x="1" y="2" status="blank" onclick="hit(this)"></pit>
+		<pit x="2" y="2" status="blank" onclick="hit(this)"></pit>
+		<pit x="3" y="2" status="blank" onclick="hit(this)"></pit>
+		<pit x="0" y="3" status="blank" onclick="hit(this)"></pit>
+		<pit x="1" y="3" status="blank" onclick="hit(this)"></pit>
+		<pit x="2" y="3" status="blank" onclick="hit(this)"></pit>
+		<pit x="3" y="3" status="blank" onclick="hit(this)"></pit>
+	</game>
+</td>
+	<!-- นับคะแนน -->
+	<h2>score: <span id="theScore">0</span></h2>
+
+
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

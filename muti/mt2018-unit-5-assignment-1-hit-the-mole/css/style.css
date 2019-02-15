@@ -1,0 +1,66 @@
+body {
+		font-family: sans-serif;
+		background:url("https://sftextures.com/texture/6229/1/6227/cartoon-green-grass-background-river-brown-hills-forest-far-away-blue-sky-512x362.png");
+  background-size: 100%;
+	}
+	h1,h2,h3{
+		text-align:center;
+		text-transform:uppercase;
+	}
+	game{
+		display:block;
+		background-color: white;
+		margin:2em auto;
+		width:400px;
+		height:400px;
+		position:relative;
+		border-radius:10px;
+		overflow:hidden;
+	}
+	pit{
+		display:block;
+		width:100px;
+		height:100px;
+		position:absolute;
+		left:0px;
+		top:0px;
+	}
+
+
+
+	/*  แก้เฉพาะด้านล่างเอง */
+
+	pit[y="1"]{
+		top:100px;
+	}
+	pit[y="2"]{
+		top:200px;
+	}
+	pit[y="3"]{
+		top:300px;
+	}
+	pit[x="1"]{
+		left:100px;
+	}
+	pit[x="2"]{
+		left:200px;
+	}
+	pit[x="3"]{
+		left:300px;
+	}
+
+	pit[status="mole"]{
+		background:url("https://openhouse.it.kmitl.ac.th/assets/img/bebras-logo-new.png");
+    background-size: 100%;
+	}
+	pit[status="die"]{
+		background:url("https://media.giphy.com/media/xUA7aXJY46jN2P6gGk/giphy.gif");
+    background-size: 99%;
+	}
+	pit[status="miss"]{
+    background:url("http://subcubus.com/gallery/wp-content/uploads/sites/7/2016/06/firetransparent.gif");
+    background-size: 99%
+	}
+td{
+	border: 1px solid black;
+}
