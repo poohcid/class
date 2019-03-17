@@ -5,6 +5,11 @@ div{
   margin: 20px;
   color: white;
   border: 6px solid black;
+  text-align: center;
+}
+#money{
+    position: relative;
+    left: 90%;
 }
 #food{
   position: absolute;
@@ -15,4 +20,21 @@ div{
   position: absolute;
   top: 60%;
   left: 50%;
+}
+#gun{
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  color: black;
+}
+div[set = "a"]{
+  position: relative;
+  top: 60%;
+  left: 25%;
+}
+div[set = "c"]{
+  position: relative;
+  top: 60%;
+  left: 25%;
+  background-color: black;
 }

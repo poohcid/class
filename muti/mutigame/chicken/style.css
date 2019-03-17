@@ -1,0 +1,19 @@
+#farm{
+    position: relative;
+    top: 50px;
+    left:100px;
+    width: 1300px;
+    height: 600px;
+    background-color: #EEE;
+    border: 1px black solid;
+}
+img{
+    display: inline-block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+}
+img[size = 'c']{
+    width: 160px;
+    height: 160px;
+}

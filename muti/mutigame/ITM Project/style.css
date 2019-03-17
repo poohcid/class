@@ -1,0 +1,100 @@
+html{
+  font-family: 'Raleway', sans-serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url("image/grass.jpg");
+}
+body{
+  margin: 0%;
+}
+#farm{
+    position: relative;
+    top: 50px;
+    left:100px;
+    width: 1300px;
+    height: 550px;
+    border-radius: 30px;
+    background: #7b5651;
+    border: 1px black solid;
+}
+img{
+    display: inline-block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+}
+img[size = 'c']{
+    width: 180px;
+    height: 140px;
+}
+img[size = 'e']{
+  width: 60px;
+  height: 60px;
+}
+.statusbar{
+  width:100%;
+  height: 3.5em;
+  background-color:#474747;
+}
+#money{
+  margin-top: 0;
+  color: white;
+  text-align: center;
+}
+.tools {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 120px;
+   background-color: #474747;
+   color: white;
+   color: black;
+}
+#gun{
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: 100px;
+  border-radius: 15px;
+  background: white;
+  background-image: url('image/gun.png');
+  background-size: cover;
+}
+#food{
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: 300px;
+  border-radius: 15px;
+  background: white;
+  background-image: url('image/sack.png');
+  background-size: cover;
+}
+#all{
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: 500px;
+  border-radius: 15px;
+  background: white;
+  background-size: cover;
+  text-align: center;
+  font-size: 50px;
+}
+#shop{
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: 700px;
+  border-radius: 15px;
+  background: white;
+  background-image: url('image/chick_flip.gif');
+  background-size: cover;
+}
