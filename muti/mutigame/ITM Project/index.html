@@ -20,8 +20,7 @@
       <img src="image/egg.png" id="e6" size="a" x="0" y="0" onclick="Egg('e6')" />
       <img src="image/egg.png" id="e7" size="a" x="0" y="0" onclick="Egg('e7')" />
       <img src="image/egg.png" id="e8" size="a" x="0" y="0" onclick="Egg('e8')" />
-      <img src="image/chick_flip.gif" id="b1" size="a" grow="0" x="0" y="0"/>
-      <img src="image/chick_flip.gif" id="b2" size="a" grow="0" onclick="change('b1')" />
+      <img src="image/chick_flip.gif" id="b1" size="a" grow="0" onclick="change('b1')" />
       <img src="image/chick_flip.gif" id="b2" size="a" grow="0" onclick="change('b2')"/>
       <img src="image/chick_flip.gif" id="b3" size="a" grow="0" onclick="change('b3')"/>
       <img src="image/chick_flip.gif" id="b4" size="a" grow="0" onclick="change('b4')"/>
@@ -36,9 +35,10 @@
     <div id="gun" onclick="gunMan()">
     <p id="gunlv">Lv.1</p>
     </div>
-    <div id="food"></div>
-    <div id="all">all</div>
+    <div id="food" onclick="Food()"></div>
+    <div id="all" onclick="allFood()">all</div>
     <div id="shop" onclick="Shop()"></div>
+    <div id="score">0</div>
   </div>
 
   <script src="scripts.js"></script>

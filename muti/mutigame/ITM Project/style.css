@@ -98,3 +98,15 @@ img[size = 'e']{
   background-image: url('image/chick_flip.gif');
   background-size: cover;
 }
+#score{
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: 900px;
+  border-radius: 15px;
+  background: white;
+  background-size: cover;
+  text-align: center;
+  font-size: 50px;
+}

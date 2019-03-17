@@ -12,9 +12,11 @@ var gun=1;
 var start1 = 1;
 var enemyCount = 1;
 var shop=0;
+var score = 0;
 
 function gameplay(){
   document.getElementById("money").innerHTML = "Money : "+money;
+  document.getElementById("score").innerHTML = score;
   Enemy[1]++;
   if (start1 == 1){
     start1 = 0;
@@ -62,23 +64,23 @@ function grow(){
     x = Number(x);
     var In = Number(typeBox-1);
     if (CountFood[In] > 0){
-      add += 3;
+      add += 4;
       CountFood[In]--;
     }
     if (x != 0 && x < 100){
         x += add;
         document.getElementById("b"+typeBox).setAttribute('grow', x);
     }
-    if (x >= 5 && (Math.floor(Math.random() * 6) == 5) && egg[In] == 0){
+    if (x >= 40 && (Math.floor(Math.random() * 6) == 5) && egg[In] == 0){
       egg[In] = 1;
       document.getElementById("e"+typeBox).setAttribute('size', 'e');
       document.getElementById("e"+typeBox).style.left = Number(document.getElementById("b"+typeBox).getAttribute('x'))+"px";
       document.getElementById("e"+typeBox).style.top = Number(document.getElementById("b"+typeBox).getAttribute('y'))+"px";
     }
-    if (x >= 5){
+    if (x >= 40){
       document.getElementById("b"+typeBox).setAttribute('src', 'image/hen2.gif');
     }
-    if (x >= 20){
+    if (x >= 100){
       document.getElementById("b"+typeBox).setAttribute('src', 'image/hen.gif');
     }
 }
@@ -89,20 +91,34 @@ function change(id){
   var x = Number(id[1]);
   if (check >= 100){
     money += 500;
-    num.setAttribute('grow', 0);
+    chicken[x-1] = 0;
+    document.getElementById("b"+x).setAttribute('grow', 0);
+    document.getElementById("b"+x).setAttribute('size', 'a');
+    document.getElementById("b"+x).setAttribute('src', 'image/chick_flip.gif');
+    score++;
+
   }
   else if (CheckFood == 1 && check != 0 && check < 90){
+      alert("kuy");
       CheckFood = 0;
-      num.setAttribute('grow', Number(num.innerHTML) + 10);
+      num.setAttribute('grow', Number(check)+10);
     }
     CheckFood = 0;
 }
 
-function food(){
+function Food(){
   if (money >= 20 && CheckFood == 0){
-    money -= 20;
+    money -= 40;
     CheckFood = 1;
   }
+}
+
+function allFood(){
+  if (CheckFood == 1){
+    for (var i=0; i < 8; i++)
+      CountFood[i] += Math.floor(Math.random()*4+1);
+  }
+    CheckFood = 0;
 }
 
 function Shop(){
@@ -114,7 +130,7 @@ function Shop(){
 
 function Egg(id){
   id = id[1];
-  money += 50;
+  money += 20;
   document.getElementById("e"+id).setAttribute('size', 'a');
   egg[id-1] = 0;
 }
