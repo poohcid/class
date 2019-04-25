@@ -7,16 +7,31 @@ var CountFood=[0, 0, 0, 0, 0, 0, 0, 0];
 var egg = [0, 0, 0, 0, 0, 0, 0, 0];
 var Enemy = [0, 0, 100, 50];
 var EnemyR;
-var money = 500;
+var money = 460;
 var gun=1;
 var start1 = 1;
 var enemyCount = 1;
 var shop=0;
 var score = 0;
+var end=0;
+var gunPirce = 200;
 
 function gameplay(){
+  if (end == 1){
+    clearInterval(game);
+    window.location.href = "#popup1";
+    document.getElementById("total").innerHTML = "Score: "+score;
+  }
+  var cursor = shop + CheckFood;
+  document.getElementById("farm").setAttribute('shopchick', cursor);
   document.getElementById("money").innerHTML = "Money : "+money;
-  document.getElementById("score").innerHTML = score;
+  document.getElementById("score").innerHTML = "Score : "+score;
+  if (CheckFood == 2){
+    document.getElementById("all").style.cursor = "url('image/wheat.png'),auto";
+  }
+  else{
+    document.getElementById("all").style.cursor = "pointer";
+  }
   Enemy[1]++;
   if (start1 == 1){
     start1 = 0;
@@ -36,7 +51,7 @@ function gameplay(){
         break;
       }
       if (i==7) {
-        alert("GAME OVER");
+        end = 1;
       }
     }
   }
@@ -108,8 +123,7 @@ function change(id){
     score++;
 
   }
-  else if (CheckFood == 1 && check != 0 && check < 90){
-      alert("kuy");
+  else if (CheckFood == 2 && check != 0 && check < 90){
       CheckFood = 0;
       num.setAttribute('grow', Number(check)+10);
     }
@@ -117,14 +131,14 @@ function change(id){
 }
 
 function Food(){
-  if (money >= 40 && CheckFood == 0){
-    money -= 40;
-    CheckFood = 1;
+  if (money >= 30 && CheckFood == 0 && shop == 0){
+    money -= 30;
+    CheckFood = 2;
   }
 }
 
 function allFood(){
-  if (CheckFood == 1){
+  if (CheckFood == 2){
     for (var i=0; i < 8; i++)
       CountFood[i] += Math.floor(Math.random()*4+1);
   }
@@ -132,15 +146,26 @@ function allFood(){
 }
 
 function Shop(){
-  if (money >= 100){
+  if (money >= 100 && shop == 0 && CheckFood == 0 && arrayC() == 1){
     money -= 100;
     shop = 1;
   }
 }
 
+function arrayC(){
+  var check=0;
+  for (var i=0; i < 8; i++){
+    if(chicken[i] == 0){
+      check=1;
+      break;
+    }
+  }
+  return check;
+}
+
 function Egg(id){
   id = id[1];
-  money += 20;
+  money += 40;
   document.getElementById("e"+id).setAttribute('size', 'a');
   egg[id-1] = 0;
 }
@@ -151,13 +176,31 @@ function walk(){
   var chick = document.getElementById(numC);
   var num = Math.floor(Math.random()*5);
   var walking = 50*(num == 1 || num == 2) + -50*(num == 3 || num == 4);
+  if (walking < 0 && chick.getAttribute('grow') < 40){
+    chick.setAttribute('src', 'image/chick.gif');
+  }
+  else if (walking > 0 && chick.getAttribute('grow') < 40){
+    chick.setAttribute('src', 'image/chick_flip.gif');
+  }
+  else if (walking < 0 && chick.getAttribute('grow') >= 40 && chick.getAttribute('grow') < 100){
+    chick.setAttribute('src', 'image/hen2.gif');
+  }
+  else if (walking > 0 && chick.getAttribute('grow') >= 40 && chick.getAttribute('grow') < 100){
+    chick.setAttribute('src', 'image/hen2_flip.gif');
+  }
+  else if (walking < 0 && chick.getAttribute('grow') >= 100){
+    chick.setAttribute('src', 'image/hen.gif');
+  }
+  else if (walking > 0 && chick.getAttribute('grow') >= 100){
+    chick.setAttribute('src', 'image/hen_flip.gif');
+  }
   if (chick.getAttribute('grow') >= 1){
     var numR = Math.floor(Math.random()*3);
     var x = chick.getAttribute('x');
     var y = chick.getAttribute('y');
     x = Number(x);
     y = Number(y);
-    x += walking*(numR%2 == 0)*(x+walking > -50 && x+walking < 1200);
+    x += walking*(numR%2 == 0)*(x+walking > -50 && x+walking < 1100);
     y += walking*(numR%2 == 1)*(y+walking > -50 && y+walking < 400);
     chick.style.left = x + "px";
     chick.style.top = y + "px";
@@ -167,7 +210,8 @@ function walk(){
 }
 
 function start(){
-  Enemy[3] += 50;
+  money += 40;
+  Enemy[3] += 80;
   Enemy[2] = Enemy[3];
   Enemy[1] = 0;
   document.querySelector("#enemy").setAttribute('size','a');
@@ -178,6 +222,12 @@ function enemyTime(){
   enemyCount++;
   var shot = Math.floor(Math.random() * 10);
   var chick = document.getElementById("b"+shot);
+  if (shot%2 == 0){
+    document.getElementById("enemy").setAttribute('src', 'image/theft.gif');
+  }
+  else{
+    document.getElementById("enemy").setAttribute('src', 'image/theft_flip.gif');
+  }
   if (chick.getAttribute('grow') > 0 && shot <= 8 && enemyCount >= 7){
     enemyCount = 0;
     chicken[shot-1] = 0;
@@ -194,16 +244,22 @@ function kill(){
     Enemy[2] -= 20*gun;
   }
   if (Enemy[2] <= 0){
-    money += 50;
     start();
   }
 }
 
 function gunMan(){
-  if (money >= 200){
+  if (money >= gunPirce){
     gun++;
-    money -= 200;
-    document.getElementById("gun").innerHTML = "Lv."+gun+" 200$";
+    money -= gunPirce;
+    gunPirce += 150;
+    document.getElementById("gun").innerHTML = "Lv."+gun+" "+gunPirce+"$";
+  }
+  if (gun == 2){
+    document.getElementById("gun").style.backgroundImage = "url('image/pan.png')";
+  }
+  if (gun == 3){
+    document.getElementById("gun").style.backgroundImage = "url('image/gun.png')";
   }
 }
 
