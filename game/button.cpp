@@ -20,7 +20,7 @@ void item_change();
 int level[10];
 int step = 1;
 struct color{
-    int r=255, g=0, b=0;
+    int r=245, g=245, b=245;
 }rgb[30];
 int money = 0;
 int type = 0;
@@ -42,7 +42,9 @@ int text_boss;
 int price_lv = 10;
 char buff_textB[5];
 int buff_posit = 100;
-Texture2D sword, armor, wand, shield, eye, man;
+int posit_player = 130, posit_boss = 850;
+int mode_player = 0, mode_boss = 0;
+Texture2D sword, armor, wand, shield, eye, man, battle, enemy, fight_img, atk_img, def_img;
 
 int main(){
     const int WindowWidth = 1280;
@@ -63,6 +65,10 @@ int main(){
     shield = LoadTexture("img/shield.png");
     eye = LoadTexture("img/eye.png");
     man = LoadTexture("img/frame_player/frame1.png");
+    battle = LoadTexture("img/battle.png");
+    fight_img = LoadTexture("img/fight.png");
+    atk_img = LoadTexture("img/atk.png");
+    def_img = LoadTexture("img/def.png");
     while (!WindowShouldClose()){
         item_change();
         if (step == 1){
@@ -74,6 +80,8 @@ int main(){
         if (step == 2){
             arena();
             eventArena();
+            if (step_arena == 0)
+                delayAnimetion(6);
             if (step_arena == 1){
                 delayFight();
             }
@@ -105,16 +113,36 @@ float fight(int atk, int def, int type1, int type2){
 void delayFight(){
     static float time = 0.0f;
     time += GetFrameTime();
-    if (time >= 0.5f){
-        if (count%2 == 0){
+    int stop=0;
+    if (time >= 0.1f){
+        if (posit_boss >= 850 && count == 4){
             hp_player_bar -= (fight(items_fight[1][0]+buff[2], items_fight[0][1]+buff[1], type_player[1], type_boss[0])/hp_player)*200;
+            stop = 1;
         }
+        if (count == 3)
+            posit_boss -= 20;
+        if (posit_boss <= 800 && count == 3)
+            count++;
+        if (count == 4)
+            posit_boss += 20;
         if (hp_player_bar > 200)
             hp_boss_bar = 200;
         time = 0.0f;
-        count++;
+        if (count == 1)
+            posit_player += 20;
+        if (posit_player >= 180 && count == 1)
+            count++;
+        if (count == 2)
+            posit_player -= 20;
+        if (posit_player <= 130 && count == 2){
+            hp_boss_bar -= (fight(items_fight[0][0]+buff[0], items_fight[1][1]+buff[3], type_player[0], type_boss[1])/hp_boss)*200;
+            count++;
+            if (mode_boss == 0)
+                stop = 1;
+        }
+        time = 0.0f;
     }
-    if (count >= 3){
+    if (stop == 1){
         strcpy(buff_textB, "");
         step_arena = 0;
     }
@@ -148,7 +176,7 @@ void delayBuff(int type_buff, char text[]){
 void delayAnimetion(int frame){
     static char count = '1';
     static float time = 0.0f;
-    char select[29];
+    char select[29] = "";
     strcpy(select, "img/frame_player/frame");
     time += GetFrameTime();
     if (time >= 0.1f){
@@ -185,11 +213,12 @@ void home(){
     DrawText(FormatText("$ %d", price[2]), 400, 450, 30, GREEN);
     DrawText(FormatText("$ %d", price[3]), 400, 600, 30, GREEN);
     DrawText(FormatText("money: %d $", money), 10, 20, 50, GREEN);
-    DrawText(FormatText("$ 10"), 750, 85, 40, GREEN);
+    DrawText(FormatText("$ 100"), 750, 85, 40, GREEN);
     //DrawText(FormatText("%d %d", type_boss[0], type_boss[1]), 50, 300, 50, RED);
     DrawRectangle(850, 80, 80, 80, Color{rgb[9].r, rgb[9].g, rgb[9].b, 255});
     DrawText(FormatText("%s", omen), 940, 110, 30, RED);
     DrawTextureEx(man, Vector2{40, 100},0, 0.5, RAYWHITE);
+    DrawText(FormatText("Lv. %d", lv[0]), 50, 450, 40, BLACK);
     DrawTexture(sword, 500, 100, RAYWHITE);
     DrawTexture(armor, 500, 250, RAYWHITE);
     DrawTexture(wand, 500, 400, RAYWHITE);
@@ -199,14 +228,15 @@ void home(){
     DrawTexture(wand, 1050, 250, RAYWHITE);
     DrawTexture(armor, 900, 400, RAYWHITE);
     DrawTexture(shield, 1050, 400, RAYWHITE);
+    DrawTextureEx(battle, Vector2{800, 550}, 0, 0.6, RAYWHITE);
     EndDrawing();
 }
 
 void arena(){
     BeginDrawing();
     ClearBackground(RAYWHITE);
-    DrawRectangle(100, 200, 200, 200, BLUE); //player
-    DrawRectangle(900, 200, 200, 200, GREEN); //boss
+    DrawTextureEx(man, Vector2{posit_player, 230}, 0, 0.3, RAYWHITE);
+    DrawTexture(enemy, posit_boss, 200, RAYWHITE);
     DrawText(FormatText("%d %d", type_player[0], type_player[1]), 500, 100, 50, RED);
     DrawText(FormatText("%d %d", type_boss[0], type_boss[1]), 500, 200, 50, RED);
     DrawText(FormatText("%s", buff_textB), buff_posit, 150, 40, Color{rgb[10].r, rgb[10].g, rgb[10].b, 255});
@@ -219,6 +249,12 @@ void arena(){
     DrawRectangleLinesEx(Rectangle{400, 550, 100, 100}, 3, BLACK);
     DrawRectangleLinesEx(Rectangle{550, 550, 100, 100}, 3, BLACK);
     DrawRectangleLinesEx(Rectangle{700, 550, 100, 100}, 3, BLACK);
+    DrawTexture(fight_img, 400, 550, RAYWHITE);
+    DrawTexture(atk_img, 550, 550, RAYWHITE);
+    DrawTexture(def_img, 700, 550, RAYWHITE);
+    DrawText("A", 370, 500, 50, RED);
+    DrawText("S", 520, 500, 50, RED);
+    DrawText("D", 670, 500, 50, RED);
     EndDrawing();
 }
 
@@ -301,17 +337,17 @@ void eventMouseHome(){
         type = 8;
     else if (hover(1050, 1150, 400, 500))
         type = 9;
-    else if (hover(850, 930, 80, 160)){
+    else if (hover(850, 930, 80, 160) && money - 100 >= 0){
         changecolor(9);
         type = 10;
     }
     else{
         type = 0;
         for (int i=0; i < 15; i++){
-            if (i < 5 || i > 8){
-                rgb[i].r = 255;
-                rgb[i].g = 0;
-                rgb[i].b = 0;
+            if (i < 5 || i > 8 && i != 10){
+                rgb[i].r = 245;
+                rgb[i].g = 245;
+                rgb[i].b = 245;
             }
         }
     }
@@ -354,24 +390,28 @@ void eventMouseHome(){
             lv[1]++;
             text_boss = lv[1];
             hp_boss = 200+lv[1]*20;
+            enemy = LoadTexture("img/boss00.png");
         }
         if (type_boss[0] == 0 && type_boss[1] == 1){
             items_fight[1][0] = boss[1][0], items_fight[1][1] = boss[1][1];
             lv[2]++;
             text_boss = lv[2];
             hp_boss = 200+lv[2]*20;
+            enemy = LoadTexture("img/boss01.png");
         }
         if (type_boss[0] == 1 && type_boss[1] == 0){
             items_fight[1][0] = boss[2][0]+5, items_fight[1][1] = boss[2][1];
             lv[3]++;
             text_boss = lv[3];
             hp_boss = 200+lv[3]*20;
+            enemy = LoadTexture("img/boss10.png");
         }
         if (type_boss[0] == 1 && type_boss[1] == 1){
             items_fight[1][0] = boss[3][0], items_fight[1][1] = boss[3][1];
             lv[4]++;
             text_boss = lv[4];
             hp_boss = 200+lv[4]*20;
+            enemy = LoadTexture("img/boss11.png");
         }
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && type == 6)
@@ -383,6 +423,7 @@ void eventMouseHome(){
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && type == 9)
         selectItems(4);
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && type == 10){
+        money -= 100;
         int item = GetRandomValue(0, 1);
         if (type_boss[item] == 0)
             strcpy(omen, "physical");
@@ -397,9 +438,9 @@ void eventArena(){
         price_lv += text_boss*10;
     }
     if (IsKeyPressed(KEY_A) && step_arena == 0){
-        hp_boss_bar -= (fight(items_fight[0][0]+buff[0], items_fight[1][1]+buff[3], type_player[0], type_boss[1])/hp_boss)*200;
         count = 1;
         step_arena = 1;
+        mode_player = 1, mode_boss = 1;
     }
     if (IsKeyPressed(KEY_S) && step_arena == 0){
         int action = GetRandomValue(1, 4);
@@ -407,9 +448,11 @@ void eventArena(){
         strcpy(buff_textB, "+ATK");
         rgb[10].r = 255, rgb[10].g = 0, rgb[10].b = 0;
         buff_posit = 100;
+        mode_player = 0, mode_boss = 0;
         if (action == 3){
-            count = 1;
+            count = 3;
             step_arena = 1;
+            mode_player = 0, mode_boss = 1;
         }
         if (action == 4){
             count = 1;
@@ -426,9 +469,11 @@ void eventArena(){
         strcpy(buff_textB, "+DEF");
         rgb[10].r = 0, rgb[10].g = 0, rgb[10].b = 255;
         buff_posit = 100;
+        mode_player = 0, mode_boss = 0;
         if (action == 3){
-            count = 1;
+            count = 3;
             step_arena = 1;
+            mode_player = 0, mode_boss = 1;
         }
         if (action <= 2){
             count = 1;
@@ -451,9 +496,9 @@ int hover(int x1, int x2, int y1, int y2){
 }
 
 void changecolor(int button){
-    rgb[button].r = 250;
-    rgb[button].g = 125;
-    rgb[button].b = 85;
+    rgb[button].r = 220;
+    rgb[button].g = 220;
+    rgb[button].b = 220;
 }
 
 void selectItems(int typeItems){
@@ -477,14 +522,14 @@ void selectItems(int typeItems){
         items[2] = 0;
     for (int i=0; i < 4; i++){
         if (items[i] == 1){
-            rgb[i+5].r = 250;
-            rgb[i+5].g = 125;
-            rgb[i+5].b = 85;
+            rgb[i+5].r = 150;
+            rgb[i+5].g = 150;
+            rgb[i+5].b = 150;
         }
         else{
-            rgb[i+5].r = 250;
-            rgb[i+5].g = 0;
-            rgb[i+5].b = 0;
+            rgb[i+5].r = 245;
+            rgb[i+5].g = 245;
+            rgb[i+5].b = 245;
         }
     }
 }
