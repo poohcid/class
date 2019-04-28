@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int fight(int atk, int def, int type1, int type2);
+void game();
 
 int main(){
     const int WindowWidth = 1280;
@@ -46,4 +47,17 @@ int fight(int atk, int def, int type1, int type2){
     else
         result = atk + (def/2) - def;
     return result;
+}
+
+void game(){
+    time += GetFrameTime();
+        if (time >= 1.0f && hp_player > 0 && hp_boss > 0){
+            if (count%2 == 0)
+                hp_boss -= fight(player[0], boss[1], 1, 0);
+            else
+                hp_player -= fight(boss[0], player[1], 0, 0);
+            printf("%d %d\n", hp_player, hp_boss);
+            time = 0.0f;
+            count++;
+        }
 }
