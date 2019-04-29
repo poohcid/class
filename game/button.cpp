@@ -9,6 +9,8 @@ void delayAnimetion(int frame);
 void home();
 void arena();
 void resultGame();
+void lose();
+void start();
 void eventMouseHome();
 void eventArena();
 int hover(int x1, int x2, int y1, int y2);
@@ -18,7 +20,7 @@ void randomBoss();
 void item_change();
 
 int level[10];
-int step = 1;
+int step = 0;
 struct color{
     int r=245, g=245, b=245;
 }rgb[30];
@@ -44,7 +46,10 @@ char buff_textB[5];
 int buff_posit = 100;
 int posit_player = 130, posit_boss = 850;
 int mode_player = 0, mode_boss = 0;
-Texture2D sword, armor, wand, shield, eye, man, battle, enemy, fight_img, atk_img, def_img;
+Texture2D sword, armor, wand, shield, eye, man, battle, enemy;
+Texture2D fight_img, atk_img, def_img, grave, lucifer, worrior;
+Texture2D atk_player, def_player, atk_boss, def_boss;
+Font font1;
 
 int main(){
     const int WindowWidth = 1280;
@@ -69,8 +74,14 @@ int main(){
     fight_img = LoadTexture("img/fight.png");
     atk_img = LoadTexture("img/atk.png");
     def_img = LoadTexture("img/def.png");
+    grave = LoadTexture("img/grave.png");
+    lucifer = LoadTexture("img/lucifer.png");
+    worrior = LoadTexture("img/warrior.png");
+    font1 = LoadFont("font/romulus.png");
     while (!WindowShouldClose()){
         item_change();
+        if (step == 0)
+            start();
         if (step == 1){
             home();
             eventMouseHome();
@@ -94,6 +105,8 @@ int main(){
         }
         if (step == 3)
             resultGame();
+        if (step == 4)
+            lose();
     }
     return 0;
 }
@@ -215,15 +228,15 @@ void home(){
     DrawText(FormatText("money: %d $", money), 10, 20, 50, GREEN);
     DrawText(FormatText("$ 100"), 750, 85, 40, GREEN);
     //DrawText(FormatText("%d %d", type_boss[0], type_boss[1]), 50, 300, 50, RED);
-    DrawRectangle(850, 80, 80, 80, Color{rgb[9].r, rgb[9].g, rgb[9].b, 255});
-    DrawText(FormatText("%s", omen), 940, 110, 30, RED);
+    DrawRectangle(880, 80, 80, 80, Color{rgb[9].r, rgb[9].g, rgb[9].b, 255});
+    DrawText(FormatText("%s", omen), 980, 110, 30, RED);
     DrawTextureEx(man, Vector2{40, 100},0, 0.5, RAYWHITE);
     DrawText(FormatText("Lv. %d", lv[0]), 50, 450, 40, BLACK);
     DrawTexture(sword, 500, 100, RAYWHITE);
     DrawTexture(armor, 500, 250, RAYWHITE);
     DrawTexture(wand, 500, 400, RAYWHITE);
     DrawTexture(shield, 500, 550, RAYWHITE);
-    DrawTexture(eye, 850, 80, RAYWHITE);
+    DrawTexture(eye, 880, 80, RAYWHITE);
     DrawTexture(sword, 900, 250, RAYWHITE);
     DrawTexture(wand, 1050, 250, RAYWHITE);
     DrawTexture(armor, 900, 400, RAYWHITE);
@@ -237,15 +250,19 @@ void arena(){
     ClearBackground(RAYWHITE);
     DrawTextureEx(man, Vector2{posit_player, 230}, 0, 0.3, RAYWHITE);
     DrawTexture(enemy, posit_boss, 200, RAYWHITE);
-    DrawText(FormatText("%d %d", type_player[0], type_player[1]), 500, 100, 50, RED);
-    DrawText(FormatText("%d %d", type_boss[0], type_boss[1]), 500, 200, 50, RED);
+    DrawTextureEx(worrior, Vector2{400, 100}, 0, 0.7, RAYWHITE);
+    DrawTextureEx(lucifer, Vector2{400, 200}, 0, 0.7, RAYWHITE);
+    DrawTextureEx(atk_player, Vector2{520, 100}, 0, 0.7, RAYWHITE);
+    DrawTextureEx(def_player, Vector2{620, 100}, 0, 0.7, RAYWHITE);
+    DrawTextureEx(atk_boss, Vector2{520, 200}, 0, 0.7, RAYWHITE);
+    DrawTextureEx(def_boss, Vector2{620, 200}, 0, 0.7, RAYWHITE);
     DrawText(FormatText("%s", buff_textB), buff_posit, 150, 40, Color{rgb[10].r, rgb[10].g, rgb[10].b, 255});
     DrawRectangle(100, 450, hp_player_bar, 30, RED); //hp player
     DrawRectangle(900, 450, hp_boss_bar, 30, RED); //hp boss
     DrawText(FormatText("Lv. %d", text_boss), 900, 100, 40, BLACK);
     DrawText(FormatText("Lv. %d", lv[0]), 100, 100, 40, BLACK);
-    DrawRectangleLinesEx(Rectangle{100, 450, 200, 30}, 5, BLACK); //border hp player
-    DrawRectangleLinesEx(Rectangle{900, 450, 200, 30}, 5, BLACK); //border hp boss
+    DrawRectangleLinesEx(Rectangle{100, 450, 200, 30}, 2, BLACK); //border hp player
+    DrawRectangleLinesEx(Rectangle{900, 450, 200, 30}, 2, BLACK); //border hp boss
     DrawRectangleLinesEx(Rectangle{400, 550, 100, 100}, 3, BLACK);
     DrawRectangleLinesEx(Rectangle{550, 550, 100, 100}, 3, BLACK);
     DrawRectangleLinesEx(Rectangle{700, 550, 100, 100}, 3, BLACK);
@@ -270,6 +287,8 @@ void resultGame(){
         sur += text_boss*10;
     if (type_player[1] != type_boss[0])
         sur += text_boss*10;
+    if (type_player[1] != type_boss[0] && type_player[0] == type_boss[1])
+        sur += text_boss*20;
     total += 100+price_lv+sur;
     BeginDrawing();
     ClearBackground(RAYWHITE);
@@ -286,7 +305,7 @@ void resultGame(){
         DrawText("Go Home", 420, 570, 60, WHITE);
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && go == 1){
-        hp_player += 20;
+        hp_player += lv[0]*20;
         randomBoss();
         money += total;
         lv[0]++;
@@ -305,6 +324,65 @@ void resultGame(){
             boss[3][0] += 5+GetRandomValue(1, 4), boss[3][1] += 5+GetRandomValue(1, 4);
         step = 1;
     }
+    EndDrawing();
+}
+
+void lose(){
+    int check=0;
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText("You lose", 400, 100, 80, BLUE);
+    DrawText(FormatText("Score: Lv. %d", lv[0]), 400, 200, 50, BLACK);
+    DrawTextureEx(grave, Vector2{400, 300}, 0, 3, RAYWHITE);
+    DrawRectangle(800, 450, 250, 100, BLACK);
+    DrawText("Replay", 825, 470, 60, WHITE);
+    if (hover(800, 1050, 450, 550)){
+        DrawRectangle(800, 450, 250, 100, WHITE);
+        DrawText("Replay", 825, 470, 60, BLACK);
+        check = 1;
+    }
+    else
+        check = 0;
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check == 1)
+        step = 0;
+    EndDrawing();
+}
+
+void start(){
+    int i;
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawTextEx(font1, "Hero Never Die", Vector2{300, 100}, 80, 10, GREEN);
+    DrawText("press -- ENTER -- start ", 420, 250, 30, BLACK);
+    if (IsKeyPressed(KEY_ENTER)){
+        money = 0;
+        hp_player_bar = 200, hp_boss_bar = 200;
+        hp_player = 200, hp_boss = 180;
+        for (i=0; i < 4; i++)
+            boss[i][0] = 35, boss[i][1] = 20;
+        type_boss[0] = 0, type_boss[1] = 0;
+        type_player[0] = 0, type_player[1] = 0;
+        player[0] = 40, player[1] = 20, player[2] = 40, player[3] = 20;
+        items[0] = 1, items[2] = 1;
+        for (i=0; i < 4; i++)
+            price[i] = 20, level[i] = 1, buff[i] = 0;
+        for (i=1; i < 4; i++)
+            lv[i] = 0;
+        items_fight[0][0] = 40, items_fight[0][1] = 20;
+        items_fight[1][0] = 30, items_fight[1][1] = 20;
+        step_arena=0;
+        count = 1;
+        text_boss = 1;
+        lv[1]++;
+        type = 0;
+        atk_player = LoadTexture("img/sword.png");
+        def_player = LoadTexture("img/armor.png");
+        atk_boss = LoadTexture("img/sword.png");
+        def_boss = LoadTexture("img/armor.png");
+        enemy = LoadTexture("img/boss00.png");
+        step = 2;
+    }
+        
     EndDrawing();
 }
 
@@ -337,14 +415,14 @@ void eventMouseHome(){
         type = 8;
     else if (hover(1050, 1150, 400, 500))
         type = 9;
-    else if (hover(850, 930, 80, 160) && money - 100 >= 0){
+    else if (hover(880, 960, 80, 160) && money - 100 >= 0){
         changecolor(9);
         type = 10;
     }
     else{
         type = 0;
         for (int i=0; i < 15; i++){
-            if (i < 5 || i > 8 && i != 10){
+            if ((i < 5 || i > 8) && i != 10){
                 rgb[i].r = 245;
                 rgb[i].g = 245;
                 rgb[i].b = 245;
@@ -376,20 +454,21 @@ void eventMouseHome(){
         price[3] += 20;
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && type == 5){
-        step = 2;
         if (type_player[0] == 0)
-            items_fight[0][0] = player[0];
+            items_fight[0][0] = player[0], atk_player = LoadTexture("img/sword.png");
         if (type_player[0] == 1)
-            items_fight[0][0] = player[2];
+            items_fight[0][0] = player[2], atk_player = LoadTexture("img/wand.png");
         if (type_player[1] == 0)
-            items_fight[0][1] = player[1];
+            items_fight[0][1] = player[1], def_player = LoadTexture("img/armor.png");
         if (type_player[1] == 1)
-            items_fight[0][1] = player[3];
+            items_fight[0][1] = player[3], def_player = LoadTexture("img/shield.png");
         if (type_boss[0] == 0 && type_boss[1] == 0){
             items_fight[1][0] = boss[0][0], items_fight[1][1] = boss[0][1];
             lv[1]++;
             text_boss = lv[1];
             hp_boss = 200+lv[1]*20;
+            atk_boss = LoadTexture("img/sword.png");
+            def_boss = LoadTexture("img/armor.png");
             enemy = LoadTexture("img/boss00.png");
         }
         if (type_boss[0] == 0 && type_boss[1] == 1){
@@ -397,6 +476,8 @@ void eventMouseHome(){
             lv[2]++;
             text_boss = lv[2];
             hp_boss = 200+lv[2]*20;
+            atk_boss = LoadTexture("img/sword.png");
+            def_boss = LoadTexture("img/shield.png");
             enemy = LoadTexture("img/boss01.png");
         }
         if (type_boss[0] == 1 && type_boss[1] == 0){
@@ -404,6 +485,8 @@ void eventMouseHome(){
             lv[3]++;
             text_boss = lv[3];
             hp_boss = 200+lv[3]*20;
+            atk_boss = LoadTexture("img/wand.png");
+            def_boss = LoadTexture("img/armor.png");
             enemy = LoadTexture("img/boss10.png");
         }
         if (type_boss[0] == 1 && type_boss[1] == 1){
@@ -411,8 +494,12 @@ void eventMouseHome(){
             lv[4]++;
             text_boss = lv[4];
             hp_boss = 200+lv[4]*20;
+            atk_boss = LoadTexture("img/wand.png");
+            def_boss = LoadTexture("img/shield.png");
             enemy = LoadTexture("img/boss11.png");
+            
         }
+        step = 2;
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && type == 6)
         selectItems(1);
@@ -437,6 +524,8 @@ void eventArena(){
         step = 3;
         price_lv += text_boss*10;
     }
+    if (hp_player_bar <= 0)
+        step = 4;
     if (IsKeyPressed(KEY_A) && step_arena == 0){
         count = 1;
         step_arena = 1;
