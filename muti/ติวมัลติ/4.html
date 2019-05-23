@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SVG 1</title>
+</head>
+<body>
+	<svg viewBox="0 0 100 100">
+		<svg>
+			<path d="m8 20
+			q-15,-5 0,-20
+			q15,15 0,20
+			" stroke-width="0.5" stroke="white" fill="cyan"/>
+		</svg>
+		<svg y="20">
+			<path d="m8 40
+			q-15,-5 0,-40
+			q15,35 0,40
+			" stroke-width="0.5" stroke="white" fill="cyan"/>
+		</svg>
+		<svg y="40">
+			<path d="m8 40
+			v4
+			a4 1,0,0 0,20 0
+			v-4
+			" stroke-width="0.5" stroke="white" fill="red"/>
+		</svg>
+		<svg y="2" x="55">
+			<path
+			stroke-width="0.5" stroke="white" fill="red">
+			<animate
+			attributeName="d"
+			values="m8 40 v5 a5 1,0,0 0,9 0 v-5;
+			        m8 40 v5 a5 1,0,0 0,15 0 v-5;
+			        m8 40 v5 a5 1,0,0 0,9 0 v-5"
+			dur="2s"
+			repeatCount="indefinite"/></path>
+		</svg>
+		<svg y="2" x="55">
+			<path d="m8 40
+			a5 1,0,0 0,9 0
+			a5 1,0,0 0,-9 0
+			" stroke-width="0.5" stroke="white" fill="pink">
+			<animate
+			attributeName="d"
+			values="m8 40 a5 1,0,0 0,9 0 a5 1,0,0 0,-9 0;
+			        m8 40 a5 1,0,0 0,15 0 a5 1,0,0 0,-15 0;
+			        m8 40 a5 1,0,0 0,9 0 a5 1,0,0 0,-9 0"
+			dur="2s"
+			repeatCount="indefinite"/></path>
+		</svg>
+		<svg y="11" x="55">
+			<path d="m8 40
+			v5
+			a5 1,0,0 0,10 0
+			v-5
+			" stroke-width="0.5" stroke="white" fill="red"/>
+		</svg>
+		<svg y="11" x="55">
+			<path d="m8 40
+			a5 1,0,0 0,10 0
+			a5 1,0,0 0,-10 0
+			" stroke-width="0.5" stroke="white" fill="pink">
+		</svg>
+		<svg y="20" x="52.5">
+			<path d="m8 40
+			v5
+			a5 1,0,0 0,15 0
+			v-5
+			" stroke-width="0.5" stroke="white" fill="red"/>
+		</svg>
+		<svg y="20" x="52.5">
+			<path d="m8 40
+			a5 1,0,0 0,15 0
+			a5 1,0,0 0,-15 0
+			" stroke-width="0.5" stroke="white" fill="pink">
+		</svg>
+		<svg y="30" x="50">
+			<path d="m8 40
+			v5
+			a5 1,0,0 0,20 0
+			v-5
+			" stroke-width="0.5" stroke="white" fill="red"/>
+		</svg>
+		<svg y="30" x="50">
+			<path d="m8 40
+			a5 1,0,0 0,20 0
+			a5 1,0,0 0,-20 0
+			" stroke-width="0.5" stroke="white" fill="pink">
+		</svg>
+
+		<svg y="40">
+			<path d="m8 40
+			a5,1 0 0,0 20,0
+			a5,1 0 0,0 -20,0
+			" stroke-width="0.5" stroke="white" fill="pink"/>
+		</svg>
+	</svg>
+	<style type="text/css">
+		svg{
+			background:yellow;
+			max-width: 50%;
+		}
+	</style>
+
+</body>
+</html>

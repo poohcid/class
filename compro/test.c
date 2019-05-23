@@ -1,11 +1,14 @@
 #include <stdio.h>
-
-int main()
+#include <string.h>
+int main ()
 {
-    int count=100;
-    for (int i=1; i < count; i++)
-    {
-        printf("%d", i/10);
-    }
-    return 0;
+char str[] = "This is a string";
+char ch = 's';
+char *result;
+result = strchr(str,ch);
+while(result != NULL) {
+printf("Found at position: %s\n", result);
+result = strchr(result+1,ch);
+}
+return 0;
 }
