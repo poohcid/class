@@ -80,17 +80,36 @@ body{
   left: 25%;
 }
 
-div[size="b"]{
-  background-color: url("");
+.work[size="b"]{
+  background-image: url("grass.png");
+  background-size: 0%;
+  background-repeat:no-repeat;
+  background-position: center 100%;
 }
 
-div[size="a"]{
-  background-image: url("grass.png");
+.homec[size="b"]{
+  background-image: url("wash2.png");
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-position: center 0%;
 }
+
+
+.work[size="a"]{
+  background-image: url("grass.png");
+  background-size: 100%;
+  background-repeat:no-repeat;
+  transition: background-size 0.4s;
+  background-position: center 100%;
+}
+
 
 .homec[size="a"]{
   background-image: url("wash2.png");
   background-repeat: no-repeat;
+  background-size: 100%;
+  transition: background-size 0.4s;
+  background-position: center 0%;
 }
 
 #score{
