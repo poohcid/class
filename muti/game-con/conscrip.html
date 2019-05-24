@@ -6,7 +6,18 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body id="body1">
-    <h1 id="score">0</h1>
+    <div id="house">
+      <img src="img/flag.png" class="home1">
+      <img src="img/home2.png" class="home1"/>
+      <img src="img/home1.png" class="home1"><br>
+      <img src="img/rai.png" id="rai">
+    </div>
+    <div id="stat"></div>
+    <img src="img/tu.png" id="tu"/>
+    <h1 id="score" color="green">0</h1>
+   <img src="img/angry.png" id="angry"/>
+   <div id="hp_bar" ></div>
+   <div id="hp_border"></div>
    <div id="field">
     <div id="g1" class="work" size="a" onclick="grass('1')"></div>
     <div id="g2" class="work" size="a" onclick="grass('2')"></div>
@@ -31,15 +42,11 @@
      <div id="w4" class="homec" size="b" hp="0" onclick="wash('4')"></div>
      <div id="w5" class="homec" size="b" hp="0" onclick="wash('5')"></div>
    </div>
-   <img src="tu.png" id="tu"/>
-   <img src="angry.png" id="angry"/>
-   <div id="hp_bar" ></div>
-   <div id="hp_border"></div>
    <div id="popup1" class="overlay">
   <div class="popup">
     <div id="content">
-        <img src="push1.jpg" id="push"/>
-       <h2>เจ้านายไม่พึงพอใจสิ่งนี้</h2>
+        <img src="img/push1.png" id="push"/>
+       <h2>เจ้านายไม่พอใจสิ่งนี้</h2>
       <button id="again" onclick="window.location.href = 'conscrip.html'">replay</button>
     </div>
   </div>

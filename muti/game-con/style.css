@@ -1,28 +1,63 @@
 body{
-  background-color: #cccccc;
+  background-image: url("img/grass.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#stat{
+  background-color: black;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 10%;
+  width: 100%;
+}
+
+#house{
+  background-color: #aaaaaa;
+  display: inline-block;
+  position: absolute;
+  width: 69%;
+  height: 90%;
+  left: 31%;
+  top: 10%;
+  border-radius: 10%;
+}
+
+.home1{
+  width: 300px;
+  height: 300px;
+}
+
+#rai{
+  position: relative;
+  display: inline-block;
+  left: 20%;
+  height: 150px;
+  width: 500px;
 }
 
 .work{
   display: inline-block;
   height: 100px;
   width: 100px;
-  margin: 5px;
+  margin: 1px;
   font-size: 0;
 }
 
 #hp_border{
   position: absolute;
   top: 5%;
-  left: 45%;
+  left: 20%;
   height: 20px;
   width: 397px;
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 #hp_bar{
   position: absolute;
   top: 5.2%;
-  left: 45%;
+  left: 20%;
   width: 0px;
   height: 20px;
   background-color: red;
@@ -30,11 +65,17 @@ body{
 }
 
 #field{
+  border: 4px solid #A05223;
+  border-radius: 25px;
   position: absolute;
-  top: 10%;
-  width: 380px;
-  height: 540px;
+  top: 20%;
+  left: 0%;
+  width: 370px;
+  height: 530px;
   font-size: 0;
+  background-image: url("img/field.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #home{
@@ -60,7 +101,7 @@ body{
   width: 50px;
   height: 50px;
   top: 3%;
-  left: 25%;
+  left: 5%;
 }
 
 #angry{
@@ -69,7 +110,7 @@ body{
   width: 50px;
   height: 50px;
   top: 3%;
-  left: 40%;
+  left: 15%;
 }
 
 #push{
@@ -81,14 +122,15 @@ body{
 }
 
 .work[size="b"]{
-  background-image: url("grass.png");
+  margin-left: 15px;
+  background-image: url("img/grass.png");
   background-size: 0%;
   background-repeat:no-repeat;
   background-position: center 100%;
 }
 
 .homec[size="b"]{
-  background-image: url("wash2.png");
+  background-image: url("img/wash2.png");
   background-size: 0%;
   background-repeat: no-repeat;
   background-position: center 0%;
@@ -96,7 +138,8 @@ body{
 
 
 .work[size="a"]{
-  background-image: url("grass.png");
+  margin-left: 15px;
+  background-image: url("img/grass.png");
   background-size: 100%;
   background-repeat:no-repeat;
   transition: background-size 0.4s;
@@ -105,7 +148,7 @@ body{
 
 
 .homec[size="a"]{
-  background-image: url("wash2.png");
+  background-image: url("img/wash2.png");
   background-repeat: no-repeat;
   background-size: 100%;
   transition: background-size 0.4s;
@@ -113,9 +156,10 @@ body{
 }
 
 #score{
+  color: green;
   display: inline-block;
   position: absolute;
-  left: 30%;
+  left: 10%;
 }
 
 #myscore{
