@@ -1,0 +1,462 @@
+/*!
+Theme Name: Jabont Simple
+Theme URI: http://underscores.me/
+Author: Jabont
+Author URI: http://Jabont.com
+Description: for very simple theme default
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: jabont-simple
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Jabont Simple is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+    color: #fff;
+    background: #242424;
+}
+
+#home{
+    margin: 0;
+    font-family: 'Ubuntu', 'Kanit';
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: #292929;
+}
+a.white-mode, a.white-mode:link, a.white-mode:visited, a.white-mode:active{
+  font-family: 'Ubuntu', 'Kanit';
+  font-size: 12px;
+  text-decoration: none;
+  background: #212121;
+  padding: 8px 18px;
+  color: #f7f7f7;
+  border-radius: 20px;
+  margin: 0 4px;
+}
+&:hover{
+    background: #edf3f8;
+    color: #212121;
+}
+.game{
+    +transform(translateY(-20%) scale(.8));
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    top: 0.01%;
+    padding: 0 90px;
+    text-align: left;
+  }
+
+.content{
+  +transform(translateY(-40%) scale(.8));
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  top: 37%;
+  padding: 0 90px;
+  text-align: left;
+}
+
+.title{
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1;
+  margin-top: 14px;
+  color: #FFFFFF;
+  display: block;
+  pointer-events: none;
+}
+span{
+    color: #90e5fb;
+}
+
+.subtitle{
+  pointer-events: none;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 14px;
+  color: #FFFFFF;
+  display: block;
+  pointer-events: none;
+}
+span{
+    color: #90e5fb;
+}
+
+button.btn1{
+    color:black;
+    border-radius: 20px;
+    border-color:#292929;
+    border-width: 3px;
+    width: 200px;
+    padding: 10px 20px;
+    margin-top: 145px;
+    margin-left: 15px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    background: white;
+    transition: 0.5s;
+
+}
+.btn1:hover{
+    cursor: pointer;
+    color: white;
+    background: black;
+    background-position: right center;
+}
+button.btn3{
+    color:black;
+    border-radius: 20px;
+    border-color:#292929;
+    border-width: 3px;;
+    padding: 10px 20px;
+    margin-top: 145px;
+    margin-left: 15px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.5s;
+    width: 400px;
+    height: 80px;
+    font-size: 25px;
+    background: rgb(255, 226, 98)
+
+}
+button.btn3:hover{
+    cursor: pointer;
+    color: white;
+    background: #292929;
+}
+
+
+button.btn2{
+    color:lightgreen;
+    border-color:lightgreen;
+    background:#292929;
+    border-radius: 20px;
+    border-width: 3px;
+    width: 100px;
+    padding: 10px 20px;
+    margin-top: 145px;
+    margin-left: 15px;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    transition: 0.5s;
+}
+.btn2:hover{
+    cursor: pointer;
+    color: black;
+    background: white;
+    background-position: right center;
+}
+
+section {
+    position: relative;
+  }
+
+  section img {
+      position: absolute;
+  }
+
+
+  .top {
+      width: 100%;
+      animation-name: fade;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-duration: 4s;
+      animation-direction: alternate;
+  }
+  .bottom{
+    width: 100%;
+    height: 750px;
+  }
+  @keyframes fade {
+      0% {
+          opacity: 1;
+      }
+      25% {
+          opacity: 1;
+      }
+      75% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 0;
+      }
+  }
+
+#newsb{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', 'Kanit', sans-serif;
+    background-color: #242424;
+    color: #fff;
+}
+
+.container{
+    width: 950px;
+    margin: 0 auto;
+}
+.menubar h1{
+    margin: 0;
+    font-size: 24px;
+    padding-top: 10px;
+}
+.menubar {
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 10px #2f2f2f;
+}
+.menubar .logo{
+    float: left;
+}
+.menubar ul.menu{
+    list-style: none;
+    float: right;
+}
+.menubar ul.menu li{
+    float: left;
+    margin-right: 20px;
+}
+.menubar ul.menu li a{
+    float: left;
+    margin-right: 20px;
+    text-decoration: none;
+    padding-bottom: 20px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.menubar ul.menu li a:hover{
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 0px;
+}
+.header{
+    width: 100%;
+    background: url("http://161.246.38.35/~it61070166/wordpress/wp-content/uploads/2019/05/army2.jpg")  no-repeat;
+    background-size: cover;
+    height: 450px;
+    text-align: center;
+}
+.header_area h1{
+    margin: 0;
+    padding-bottom: 10px;
+}
+.clearfix{
+    clear: both;
+    margin: 0;
+}
+.header_area{
+    padding-top: 300px;
+    text-align: center;
+    color:#ffffff;
+    margin: 0 auto;
+}
+.info_text{
+    text-align: center;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 100;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(65, 65, 65);
+    color: white;
+ }
+ .footer .text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  margin-left: 70px;
+  background-color: rgb(65, 65, 65);
+  color: white;
+  text-align: left;
+}
+.footer .logo {
+  position: absolute;
+  right: 25%;
+  bottom: 10px;
+  width: 10%;
+  background-color: rgb(65, 65, 65);
+  color: white;
+  z-index: 1;
+}
+.text{
+    background: #444444;
+    border-radius: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Ubuntu', 'Kanit';
+}
+
+#what{
+    width: 100%;
+    background: url("http://161.246.38.35/~it61070166/wordpress/wp-content/uploads/2019/05/army.jpg")  no-repeat;
+    background-size: cover;
+    height: 450px;
+    text-align: center;
+}
+
+}
+.info_text{
+    margin-top: 10px;
+    text-align: center;
+}
+.box_pantip p{
+    text-align: center;
+    color: white;
+}
+.box_pantip{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_pantip {
+   width:1000px;
+}
+.box_thaifighter p{
+    text-align: center;
+    color: white;
+}
+.box_thaifighter{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_thaifighter {
+   width:1000px;
+}
+
+ .box_thaifighter2 p{
+     text-align: center;
+     color: white;
+ }
+ .box_thaifighter2{
+     width: 100%;
+     border-radius: 10px;
+     text-align: center;
+     background: #444444;
+ }
+ .container .box_thaifighter2 {
+    width:1000px;
+ }
+
+ .box_dekd p{
+    text-align: center;
+    color: white;
+}
+.box_dekd{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_dekd {
+   width:1000px;
+}
+
+#comment{
+    width: 100%;
+    background: url("http://161.246.38.35/~it61070166/wordpress/wp-content/uploads/2019/05/soldier.jpg")  no-repeat;
+    background-size: cover;
+    height: 450px;
+    text-align: center;
+
+}
+.header_area h1{
+    margin: 0;
+    padding-bottom: 10px;
+}
+.header_area{
+    padding-top: 350px;
+    text-align: center;
+    color:#ffffff;
+    margin: 0 auto;
+}
+.info_text{
+    margin-top: 10px;
+    text-align: center;
+}
+.box_pantip p{
+    text-align: center;
+    font-style: italic;
+    color: white;
+}
+.box_pantip{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_pantip {
+   width:1000px;
+}
+.box_thaifighter p{
+    text-align: center;
+    font-style: italic;
+    color: white;
+}
+.box_thaifighter{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_thaifighter {
+   width:1000px;
+}
+
+ .box_thaifighter2 p{
+     text-align: center;
+     color: white;
+     font-style: italic;
+ }
+ .box_thaifighter2{
+     width: 100%;
+     border-radius: 10px;
+     text-align: center;
+     background: #444444;
+ }
+ .container .box_thaifighter2 {
+    width:1000px;
+ }
+
+ .box_dekd p{
+    text-align: center;
+    color: white;
+    font-style: italic;
+}
+.box_dekd{
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    background: #444444;
+}
+.container .box_dekd {
+   width:1000px;
+}

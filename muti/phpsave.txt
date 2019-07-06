@@ -1,0 +1,4 @@
+$id = get_the_ID();
+$post = get_post($id);
+$img = get_the_post_thumbnail_url($id,'large');
+$content = apply_filters('the_content', $post->post_content);

@@ -1,7 +1,6 @@
 body{
-  background-image: url("img/grass.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("img/sand.jpg");
+  background-repeat: repeat;
 }
 
 #stat{
@@ -14,7 +13,7 @@ body{
 }
 
 #house{
-  background-color: #aaaaaa;
+  background-image: url("img/brick.jpg");
   display: inline-block;
   position: absolute;
   width: 69%;
@@ -22,6 +21,12 @@ body{
   left: 31%;
   top: 10%;
   border-radius: 10%;
+}
+
+#flag{
+  display: inline-block;
+  width: 25%;
+  margin-left: 10%;
 }
 
 .home1{
@@ -231,11 +236,11 @@ h2{
 button{
   font-family: 'Sniglet';
   font-size: 20px;
-  display: block;
+  display: inline-block;
   border: 0;
   border: 3px solid #222222;
   border-radius: 40px;
-  margin-left: 40%;
+  margin-left: 15%;
   margin-top: 10%;
   width: 110px;
   height: 40px;
