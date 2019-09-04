@@ -1,0 +1,55 @@
+body{
+    text-align: center;
+    background-color: aquamarine;
+    margin: 0;
+    height: 100%;
+    font-family: 'K2D', sans-serif;
+}
+
+#cen{
+    width: 80%;
+    margin: auto;
+    height: auto;
+    background-color: white;
+    margin-bottom: 0;
+}
+
+form{
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 0%;
+}
+
+input{
+    width: 50%;
+    height: 30px;
+    font-size: 1em;
+    color: gray;
+    border: 1px solid gray;
+}
+
+select{
+    height: 30px;
+    font-size: 1em;
+    color: gray;
+}
+
+textarea{
+    width: 50%;
+    color: gray;
+    border: 1px solid gray;
+    font-size: 1.2em;
+}
+
+button{
+    width: 20%;
+    height: 40px;
+    font-size: 1em;
+    font-family: 'K2D', sans-serif;
+    background-color: aliceblue;
+    border: 2px solid gray;
+}
+
+h2{
+    margin-top: 3%;
+}

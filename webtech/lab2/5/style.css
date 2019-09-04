@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    background-color: bisque;
+}
+
+div{
+    margin: auto;
+    position: relative;
+    width: 80vw;
+    height: 130%;
+    background-color: white;
+    font-family: 'Mitr', sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-size: 4vmax;
+}
+
+form{
+    font-size: 2vmax;
+    margin-left: 2vw;
+    margin-bottom: 0;
+}
+
+input, select{
+    font-family: 'Mitr', sans-serif;
+    color : grey;
+    height: 7vmin;
+    margin-bottom: 2vh;
+    margin-right: 1vmax;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 7px;
+}
+
+select{
+    font-size: 1.8vmax;
+    width: 12vmin;
+    height: 6vmin;
+}
+
+input{
+    width: 17vw;
+    font-size: 2vmax;
+}
+
+#gen{
+    width: 6vmax;
+}
+
+#sub{
+    margin-top: 2vmax;
+    width: 14vw;
+}
+
+#sub:hover{
+    color: black;
+    border: 1.8px solid black;
+}
+
+td{
+    width: 2vw;
+}
+
+.house{
+    width: 9vw;
+}
+
+#n2{
+    width: 10vw;
+}
