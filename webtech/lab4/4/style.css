@@ -1,0 +1,20 @@
+
+body{
+    margin: 2%;
+    margin-left: 6%;
+}
+
+
+tr{
+    margin: 0;
+}
+
+td{
+    margin: 0;
+    width: 10.5vw;
+    height: 11vh;
+}
+
+.border-3 {
+    border-width: 10px;
+}

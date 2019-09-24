@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <script src="jsc.js" text="text/javascript"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="check()" id="myform">
+            <h1 class="text-center">แบบฟอร์ม</h1>
+            <div class="form-group">
+                <label for="email">หมายเลขบัตรประชาชน</label>
+                <input class="form-control" placeholder="เป็นตัวเลข จำนวน 13 หลัก" id="idNumber">
+            </div>
+            <div class="form-group">
+                <label for="sel1">คำนำหน้า</label>
+                <select class="form-control" id="title">
+                    <option>คำนำหน้า</option>
+                    <option>นาย</option>
+                    <option>นางสาว</option>
+                    <option>นาง</option>
+                    <option>เด็กชาย</option>
+                    <option>เด็กหญิง</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">ชื่อ</label>
+                <input class="form-control" placeholder="เป็นตัวอักษร ความยาวระหว่าง 2-20 ตัวอักษร" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">นามสกุล</label>
+                <input class="form-control" placeholder="เป็นตัวอักษร ความยาวระหว่าง 2-30 ตัวอักษร" id="lastname">
+            </div>
+            <div class="form-group">
+                <label for="email">ที่อยู่</label>
+                <input class="form-control" placeholder="ความยาวไม่ต่ำกว่า 5 ตัวอักษร" id="address1"><br>
+                <input class="form-control" placeholder="ความยาวไม่ต่ำกว่า 5 ตัวอักษร" id="address2">
+            </div>
+            <div class="form-group">
+                <label for="email">ตำบล แขวง</label>
+                <input class="form-control" placeholder="เป็นตัวอักษร ความยาวไม่ต่ำกว่า 2 ตัวอักษร" id="ad1">
+            </div>
+            <div class="form-group">
+                <label for="email">อำเภอ เขต</label>
+                <input class="form-control" placeholder="เป็นตัวอักษร" id="ad2">
+            </div>
+            <div class="form-group">
+                <label for="sel1" id="ad3">จังหวัด</label>
+                <select class="form-control" id="ad3">
+                    <option>โปรดระบุจังหวัด</option>
+                    <option>กรุงเทพมหานคร</option>
+                    <option>เชียงราย</option>
+                    <option>ชลบุรี</option>
+                    <option>สมุทรปราการ</option>
+                    <option>สงขลา</option>
+                    <option>นครราชสีมา</option>
+                    <option>ราชบุรี</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">รหัสไปรษณีย์</label>
+                <input class="form-control" placeholder="เป็นตัวเลข จำนวน 5 หลัก" id="namepost">
+            </div>
+            <div class="form-group">
+                <label for="email">เบอร์โทรศัพท์</label>
+                <input class="form-control" placeholder="เป็นตัวเลข จำนวน 9-10 หลัก" id="namephone">
+            </div>
+            <button type="submit" class="btn btn-info btn-block btn-warning">ส่ง</button><br><br>
+        </form>
+    </div>
+</body>
+
+</html>

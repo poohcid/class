@@ -1,0 +1,10 @@
+<!DOCTYPE company[
+<!ELEMENT company (employee)>
+<!ELEMENT employee (title, lastname, fistname, jobtitle, address)>
+<!ELEMENT id (#PCDATA) >
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT fistname (#PCDATA)>
+<!ELEMENT jobtitle (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+]>
