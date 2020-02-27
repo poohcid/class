@@ -1,0 +1,75 @@
+body{
+    text-align: center;
+    background-color: antiquewhite;
+    margin: 0;
+    height: 100%;
+    font-family: 'Kanit', sans-serif;
+}
+
+table{
+    font-size: 18pt;
+    margin-left: 5%;
+    border-collapse: collapse;
+}
+
+td{
+    width: 250px;
+}
+
+td, tr, th{
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+#cen{
+    max-width: 1200px;
+    margin: auto;
+    height: auto;
+    background-color: white;
+    margin-bottom: 0;
+}
+
+form{
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 0%;
+}
+
+input{
+    width: 50%;
+    height: 30px;
+    font-size: 1em;
+    color: gray;
+    border: 1px solid gray;
+}
+
+select{
+    height: 30px;
+    font-size: 1em;
+    color: gray;
+}
+
+textarea{
+    width: 50%;
+    color: gray;
+    border: 1px solid gray;
+    font-size: 1.2em;
+}
+
+button{
+    width: 20%;
+    height: 40px;
+    font-size: 1em;
+    font-family: 'K2D', sans-serif;
+    background-color: aliceblue;
+    border: 2px solid gray;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: moccasin;
+}
+
+h2{
+    margin-top: 3%;
+}

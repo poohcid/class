@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    font-family: 'Itim', cursive;
+}
+
+div{
+    border: 5px solid black;
+    width: 100%;
+    background-color: yellow;
+    color: chocolate;
+    font-size: 5vw;
+    text-align: center;
+}
+
+ul{
+    margin: 30px;
+    font-size: 3vw;
+}
+a{
+    text-decoration-line: none;
+}
+
+a:hover{
+    color: black;
+}

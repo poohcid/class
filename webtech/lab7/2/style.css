@@ -1,0 +1,11 @@
+img{
+    margin: 0;
+    width: 45%;
+    height: 300px;
+}
+
+@media screen and (max-width:600px){
+    img{
+        width: 100%;
+    }
+}

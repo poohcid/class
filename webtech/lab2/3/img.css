@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+    font-size: 2vw;
+}
+
+img{
+    width: 50vw;
+    height: 50vh;
+}
+
+a:hover{
+    color: black;
+}

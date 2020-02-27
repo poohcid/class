@@ -1,0 +1,22 @@
+body{
+    margin: 0 50 50 50;
+    font-family: 'Mitr', sans-serif;
+}
+
+label{
+    font-size: 16pt;
+}
+
+select{
+    width: 70px;
+    height: 24px;
+}
+
+button{
+    font-family: 'Mitr', sans-serif;
+    font-size: 12pt;
+}
+
+input{
+    font-size: 12pt;
+}

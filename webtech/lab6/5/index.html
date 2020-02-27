@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let requestURL = 'movie.json';
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var myJSON = JSON.parse(request.responseText);
+                myFunction(myJSON);
+            }
+        };
+        request.open("GET", requestURL, true);
+        request.send();
+        function myFunction(obj){
+            for(let i=0; i < obj.length; i++){
+                document.write(`<b>${i+1}. </b>${obj[i].title} (${obj[i].year})<br>`);
+                document.write("<ul>");
+                document.write("<li style='list-style-type:none'><br><b>Cast :</b></li><ul>");
+                for (let j=0; j < obj[i].cast.length; j++){
+                    document.write(`<li>${obj[i].cast[j]}</li>`);
+                }
+                document.write("</ul>");
+                document.write("<li style='list-style-type:none'><br><b>genres :</b></li><ul>");
+                for (let j=0; j < obj[i].genres.length; j++){
+                    document.write(`<li>${obj[i].genres[j]}</li>`);
+                }
+                document.write("</ul>");
+                document.write("</ul>")
+            }
+        }
+    </script>
+</body>
+</html>

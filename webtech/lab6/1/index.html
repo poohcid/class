@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let requestURL = 'member.json';
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var myJSON = JSON.parse(request.responseText);
+                myFunction(myJSON);
+            }
+        };
+        request.open("GET", requestURL, true);
+        request.send();
+        function myFunction(myObj) {
+            let text = myObj.members;
+            for (let i=0; text.length; i++){
+                document.write((i+1)+" <b>"+
+                text[i].firstname+
+                " "+
+                text[i].lastname+" "+
+                "</b>("+text[i].Gender+") is a "+
+                text[i].Position+", "+
+                text[i].Address+"<br>"
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>

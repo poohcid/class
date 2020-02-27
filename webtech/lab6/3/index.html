@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let requestURL = 'person.json';
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var myJSON = JSON.parse(request.responseText);
+                myFunction(myJSON);
+            }
+        };
+        request.open("GET", requestURL, true);
+        request.send();
+        function myFunction(obj){
+            let text = obj[0];
+            document.write(`${text.firstName} ${text.lastName}, ${text.gender.type} ${text.age} year old <br>
+            ${text.address.streetAddress} ${text.address.city} ${text.address.state} <br>
+            ${text.address.postalCode} <br>
+            ${text.phoneNumber[0].type} : ${text.phoneNumber[0].number} <br>
+            ${text.phoneNumber[1].type} : ${text.phoneNumber[1].number}`);
+        }
+    </script>
+</body>
+</html>
